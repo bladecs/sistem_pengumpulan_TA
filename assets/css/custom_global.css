@@ -1,0 +1,43 @@
+.custom-height {
+	min-height: 100vh;
+}
+.gradient-custom5 {
+	background: #fccb90;
+	background: -webkit-linear-gradient(135deg, #0f0f0f, #001c30, #0f0f0f);
+	background: linear-gradient(135deg, #0f0f0f, #001c30, #0f0f0f);
+}
+.gradient-custom4 {
+	background: #fccb90;
+	background: -webkit-linear-gradient(125deg, #ffffff 60%, #0f2167 40%);
+	background: linear-gradient(125deg, #ffffff 60%, #0f2167 40%);
+}
+
+.gradient-custom3 {
+	background-color: #0f2167;
+}
+
+.gradient-custom2 {
+	background: #fccb90;
+	background: -webkit-linear-gradient(135deg, #0f0f0f, #001c30, #0f0f0f);
+	background: linear-gradient(135deg, #0f0f0f, #001c30, #0f0f0f);
+}
+
+.gradient-custom {
+	background: #fccb90;
+	background: -webkit-linear-gradient(135deg, #7a316f, #461959, #7a316f);
+	background: linear-gradient(135deg, #7a316f, #461959, #7a316f);
+}
+.josefinSans {
+	font-family: "Josefin Sans", sans-serif;
+	font-weight: 600;
+}
+
+.bebasNeue {
+	font-family: "Bebas Neue", sans-serif;
+	font-weight: 600;
+	color: #0f2167;
+}
+a {
+	color: #0f0f0f;
+	text-decoration: none;
+}
