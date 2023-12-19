@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 12:04 AM
+-- Generation Time: Dec 19, 2023 at 01:41 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_akun` (
   `id_user` varchar(40) NOT NULL,
   `nama` varchar(40) NOT NULL,
-  `username` varchar(15) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `password` varchar(15) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `jurusan` varchar(30) NOT NULL,
@@ -47,6 +47,7 @@ CREATE TABLE `tb_akun` (
 --
 
 INSERT INTO `tb_akun` (`id_user`, `nama`, `username`, `password`, `tgl_lahir`, `jurusan`, `prodi`, `kelas`, `jabatan`, `jobs`, `status`) VALUES
+('092aeb37f89bcaae9b06dfae22d320bc', 'Susetyo Bagas ', '198507232005020121', 'susbasgas', '1985-07-23', 'AE', '', '', 'Panitia', 'Penilai', 'Teraktivasi'),
 ('0afe2eb99c3ffb5b552ac9a2e079d52e', 'Adam Nibros', '222443001', '28012004', '2004-01-28', 'AE', 'Informatika Indsutri', '2AEC', 'Mahasiswa', 'Mahasiswa', 'Non Aktif'),
 ('52b37d664a5d400b5f8272220c19704e', 'Hafizh Ahmad Al Mushoffi', '222443013', '31052004', '2004-05-31', 'AE', 'Informatika Indsutri', '2AEC', 'Mahasiswa', 'Mahasiswa', 'Teraktivasi'),
 ('6cfe1b61453de2202fb340d25448f5b8', 'Adhwa Nabila', '222443002', '20032004', '2004-03-20', 'AE', 'Informatika Indsutri', '2AEC', 'Mahasiswa', 'Mahasiswa', 'Teraktivasi'),
@@ -107,7 +108,7 @@ CREATE TABLE `tb_jadwal_seminar` (
 --
 
 INSERT INTO `tb_jadwal_seminar` (`id_seminar`, `id_pilih`, `id_user`, `nama_mhs`, `nama_dosen`, `topik`, `ruangan`, `waktu`, `tanggal`, `nilai`, `status`) VALUES
-('19872938ymhsdf07hmu9sd', '7f2d9f719a360a3f79f80846498c5d12', '52b37d664a5d400b5f8272220c19704e', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Robot Perpustakaan Berbasis IOT', 'Lab Robotic', '12:30:00', '2023-12-31', '', 'Belum di mulai');
+('19872938ymhsdf07hmu9sd', '7f2d9f719a360a3f79f80846498c5d12', '52b37d664a5d400b5f8272220c19704e', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Robot Perpustakaan Berbasis IOT', 'Lab Robotic', '12:30:00', '2023-12-31', '98', 'Belum di mulai');
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,86 @@ CREATE TABLE `tb_jadwal_sidang` (
 --
 
 INSERT INTO `tb_jadwal_sidang` (`id_sidang`, `id_pilih`, `id_user`, `id_penilai`, `nama_mhs`, `nama_dosen`, `topik`, `tanggal`, `waktu`, `ruangan`, `nilai`, `status`) VALUES
-('729849989duhs9df7syasd', '7f2d9f719a360a3f79f80846498c5d12', '52b37d664a5d400b5f8272220c19704e', '81778y97syd9na9sjdasjlkasd12easd', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Robot Perpustakaan Berbasis IOT', '2024-02-20', '10:30:00', 'Lab Microcontroler', '', 'Belum dilakukan');
+('729849989duhs9df7syasd', '7f2d9f719a360a3f79f80846498c5d12', '52b37d664a5d400b5f8272220c19704e', '81778y97syd9na9sjdasjlkasd12easd', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Robot Perpustakaan Berbasis IOT', '2024-02-20', '10:30:00', 'Lab Microcontroler', '98', 'Belum dilakukan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_penilaian_proposal`
+--
+
+CREATE TABLE `tb_penilaian_proposal` (
+  `id_penilaian` varchar(40) NOT NULL,
+  `id_proposal` varchar(40) NOT NULL,
+  `id_user` varchar(40) NOT NULL,
+  `nama_mhs` varchar(40) NOT NULL,
+  `nama_dosen` varchar(40) NOT NULL,
+  `nama_penilai` varchar(40) NOT NULL,
+  `nilai` int(100) NOT NULL,
+  `akreditasi` varchar(5) NOT NULL,
+  `file_proposal` varchar(40) NOT NULL,
+  `tgl_penilaian` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_penilaian_proposal`
+--
+
+INSERT INTO `tb_penilaian_proposal` (`id_penilaian`, `id_proposal`, `id_user`, `nama_mhs`, `nama_dosen`, `nama_penilai`, `nilai`, `akreditasi`, `file_proposal`, `tgl_penilaian`) VALUES
+('273107fb2bf664e1ef87c6fe6cf0143e', '85f101ffa89a62074fc86bcc1839d5b7', '092aeb37f89bcaae9b06dfae22d320bc', 'Adhwa Nabila', 'Bu Siti A', 'Susetyo Bagas ', 100, 'A', 'Kul51.pdf', '2023-12-19'),
+('a8a369a2cab8035cc537ce7fa5ac2b8b', '62ce608b2fc13e4afa6c222245b3214f', '092aeb37f89bcaae9b06dfae22d320bc', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Susetyo Bagas ', 98, 'A', 'Surat_Keterangan.pdf', '2023-12-19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_penilaian_seminar`
+--
+
+CREATE TABLE `tb_penilaian_seminar` (
+  `id_penilaian` varchar(40) NOT NULL,
+  `id_seminar` varchar(40) NOT NULL,
+  `id_user` varchar(40) NOT NULL,
+  `topik` varchar(40) NOT NULL,
+  `nama_mhs` varchar(40) NOT NULL,
+  `nama_dosen` varchar(40) NOT NULL,
+  `nama_penilai` varchar(40) NOT NULL,
+  `nilai` int(100) NOT NULL,
+  `akreditasi` varchar(5) NOT NULL,
+  `tgl_penilaian` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_penilaian_seminar`
+--
+
+INSERT INTO `tb_penilaian_seminar` (`id_penilaian`, `id_seminar`, `id_user`, `topik`, `nama_mhs`, `nama_dosen`, `nama_penilai`, `nilai`, `akreditasi`, `tgl_penilaian`) VALUES
+('77e501e67ff05c1b79b307f3061e489a', '19872938ymhsdf07hmu9sd', '092aeb37f89bcaae9b06dfae22d320bc', 'Robot Perpustakaan Berbasis IOT', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Susetyo Bagas ', 98, 'A', '2023-12-19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_penilaian_sidang`
+--
+
+CREATE TABLE `tb_penilaian_sidang` (
+  `id_penilaian` varchar(40) NOT NULL,
+  `id_sidang` varchar(40) NOT NULL,
+  `id_user` varchar(40) NOT NULL,
+  `topik` varchar(40) NOT NULL,
+  `nama_mhs` varchar(40) NOT NULL,
+  `nama_dosen` varchar(40) NOT NULL,
+  `nama_penilai` varchar(40) NOT NULL,
+  `nilai` int(100) NOT NULL,
+  `akreditasi` varchar(5) NOT NULL,
+  `tgl_penilaian` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_penilaian_sidang`
+--
+
+INSERT INTO `tb_penilaian_sidang` (`id_penilaian`, `id_sidang`, `id_user`, `topik`, `nama_mhs`, `nama_dosen`, `nama_penilai`, `nilai`, `akreditasi`, `tgl_penilaian`) VALUES
+('92b89d877fee7cf6a097fe75daba9a0e', '729849989duhs9df7syasd', '092aeb37f89bcaae9b06dfae22d320bc', 'Robot Perpustakaan Berbasis IOT', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', 'Susetyo Bagas ', 98, 'A', '2023-12-19');
 
 -- --------------------------------------------------------
 
@@ -174,6 +254,8 @@ CREATE TABLE `tb_proposal` (
   `nama_dosen` varchar(40) NOT NULL,
   `tgl_penyerahan` date NOT NULL,
   `file_proposal` varchar(30) NOT NULL,
+  `nilai` int(100) NOT NULL,
+  `akreditasi` varchar(5) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'Sedang di proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -181,9 +263,9 @@ CREATE TABLE `tb_proposal` (
 -- Dumping data for table `tb_proposal`
 --
 
-INSERT INTO `tb_proposal` (`id_proposal`, `id_user`, `id_pilih`, `nama_mhs`, `nama_dosen`, `tgl_penyerahan`, `file_proposal`, `status`) VALUES
-('62ce608b2fc13e4afa6c222245b3214f', '52b37d664a5d400b5f8272220c19704e', '7f2d9f719a360a3f79f80846498c5d12', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', '2023-12-17', 'Surat_Keterangan.pdf', 'Sedang di proses'),
-('85f101ffa89a62074fc86bcc1839d5b7', '6cfe1b61453de2202fb340d25448f5b8', 'ab0952adf66b8c0c89a75e0b8b7aea9f', 'Adhwa Nabila', 'Bu Siti A', '2023-12-18', 'Kul51.pdf', 'Sedang di proses');
+INSERT INTO `tb_proposal` (`id_proposal`, `id_user`, `id_pilih`, `nama_mhs`, `nama_dosen`, `tgl_penyerahan`, `file_proposal`, `nilai`, `akreditasi`, `status`) VALUES
+('62ce608b2fc13e4afa6c222245b3214f', '52b37d664a5d400b5f8272220c19704e', '7f2d9f719a360a3f79f80846498c5d12', 'Hafizh Ahmad Al Mushoffi', 'Pak Harry', '2023-12-17', 'Surat_Keterangan.pdf', 98, 'A', 'Sedang di proses'),
+('85f101ffa89a62074fc86bcc1839d5b7', '6cfe1b61453de2202fb340d25448f5b8', 'ab0952adf66b8c0c89a75e0b8b7aea9f', 'Adhwa Nabila', 'Bu Siti A', '2023-12-18', 'Kul51.pdf', 100, 'A', 'Sedang di proses');
 
 -- --------------------------------------------------------
 
@@ -240,6 +322,24 @@ ALTER TABLE `tb_jadwal_seminar`
 --
 ALTER TABLE `tb_jadwal_sidang`
   ADD PRIMARY KEY (`id_sidang`);
+
+--
+-- Indexes for table `tb_penilaian_proposal`
+--
+ALTER TABLE `tb_penilaian_proposal`
+  ADD PRIMARY KEY (`id_penilaian`);
+
+--
+-- Indexes for table `tb_penilaian_seminar`
+--
+ALTER TABLE `tb_penilaian_seminar`
+  ADD PRIMARY KEY (`id_penilaian`);
+
+--
+-- Indexes for table `tb_penilaian_sidang`
+--
+ALTER TABLE `tb_penilaian_sidang`
+  ADD PRIMARY KEY (`id_penilaian`);
 
 --
 -- Indexes for table `tb_pilih_topik`
