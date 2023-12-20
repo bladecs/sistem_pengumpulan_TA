@@ -26,7 +26,7 @@ class Auth extends CI_Controller
 				redirect(base_url('admin'));
 			} else if ($check['jabatan'] === 'Dosen') {
 				redirect(base_url('dosen'));
-			} else if ($check['jabatan'] === 'Mahasiswa') {
+			} else if ($check['jabatan'] === 'Mahasiswa' or $check['jabatan']==='') {
 				redirect(base_url('user'));
 			}
 			exit;
